@@ -15,16 +15,16 @@ const showUser = (req, res) => {
   // error handler if user does not exist with given id
   if(!user) {
   res.status(404)
-  res.send('that user does not exist')
+  res.send(`No user with id ${req.params.id} exists`)
   }
   res.json(user)
 }
 
 const createUser = (req, res) => {
 // push the sample user to the users array
+  sampleUser.id = users[users.length-1].id + 1 
   users.push(sampleUser)
   // let the new user id equal the previous users id + 1 (accessing last item in array with array.length -1)
-  sampleUser.id = users[users.length-1].id + 1 
   res.json(users)
 }
 
@@ -58,7 +58,7 @@ const deleteUser = (req, res) => {
   const deletedUser =  users.find(user => user.id == req.params.id)
   // error handling if no "user to be deleted" (deletedUser) found with that id
   if (!deletedUser) {
-    res.status(404)
+    res.status(400)
     res.send(`No user with id ${req.params.id} exists`)
   }
   // filter in all of the remaining users minus the deleted user to an updated users array
