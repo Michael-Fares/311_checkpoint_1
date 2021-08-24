@@ -1,5 +1,5 @@
 # Checkpoint 1
-
+#CHANGE ON LINE 2 ----
 ## Setup
 
 Initialize and run the app: `npm install` && `npm start`.
